@@ -1,5 +1,5 @@
 %define	name	ldapscripts
-%define	version	1.5
+%define	version	1.6
 %define	release	%mkrel 1
 
 Name        : %name
@@ -45,8 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
-%config(noreplace) %{_sysconfdir}/%{name}/runtime
+%{_sysconfdir}/%{name}/*.template.sample
+%{_sysconfdir}/%{name}/runtime
 %{_mandir}/man*/*
-
-
 
