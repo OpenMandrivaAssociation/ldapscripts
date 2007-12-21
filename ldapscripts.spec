@@ -13,6 +13,7 @@ Source:     http://contribs.martymac.com/ldapscripts/%{name}-%{version}.tar.bz2
 Requires:   openldap-clients
 Requires:   sharutils
 Buildarch:  noarch
+BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
 LDAP Scripts written in bash which allow to create POSIX entries for users,
