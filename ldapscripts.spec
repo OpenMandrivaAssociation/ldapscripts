@@ -1,6 +1,6 @@
 %define	name	ldapscripts
 %define	version	1.7.1
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 Name:       %name
 Version:    %version
