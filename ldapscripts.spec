@@ -1,6 +1,6 @@
 %define	name	ldapscripts
-%define	version	1.7.1
-%define	release	%mkrel 5
+%define	version	1.10.0
+%define	release	%mkrel 1
 
 Name:       %name
 Version:    %version
@@ -9,7 +9,7 @@ Summary:    LDAP Scripts
 Group:      System/Servers
 License:    GPL
 URL:        http://contribs.martymac.com/
-Source:     http://contribs.martymac.com/ldapscripts/%{name}-%{version}.tar.bz2
+Source:     http://contribs.martymac.com/ldapscripts/%{name}-%{version}.tgz
 Requires:   openldap-clients
 Requires:   sharutils
 Buildarch:  noarch
@@ -25,15 +25,18 @@ ldapmodify, slappasswd).
 
 %prep
 %setup -q
-sed -i.orig -e "s|^_RUNTIMEFILE=.*|_RUNTIMEFILE=\"%{_sysconfdir}/%{name}/runtime\"|g" bin/*
-sed -i.orig -e "s|^_CONFIGFILE=.*|_CONFIGFILE=\"%{_sysconfdir}/%{name}/ldapscripts.conf\"|g" etc/*
+sed -i.orig -e "s|^_RUNTIMEFILE=.*|_RUNTIMEFILE=\"%{_usr}/lib/%{name}/runtime\"|g" sbin/*
+sed -i.orig -e "s|^_CONFIGFILE=.*|_CONFIGFILE=\"%{_sysconfdir}/%{name}/ldapscripts.conf\"|g" etc/* lib/*
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m 755 bin/* %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sbindir}
+install -m 755 sbin/* %{buildroot}%{_sbindir}
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 install -m 600 etc/* %{buildroot}%{_sysconfdir}/%{name}
+
+mkdir -p %{buildroot}%{_usr}/lib/%{name}
+install -m 600 lib/* %{buildroot}%{_usr}/lib/%{name}
 
 mkdir -p %{buildroot}%{_mandir}
 cp -a man/man* %{buildroot}%{_mandir}
@@ -43,11 +46,11 @@ rm -rf %{buildroot}
 
 %files
 %doc README COPYING CHANGELOG 
-%{_bindir}/*
+%{_sbindir}/*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.passwd
 %{_sysconfdir}/%{name}/*.template.sample
-%{_sysconfdir}/%{name}/runtime
+%{_usr}/lib/%{name}/runtime
 %{_mandir}/man*/*
 
