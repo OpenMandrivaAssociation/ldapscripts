@@ -1,10 +1,6 @@
-%define	name	ldapscripts
-%define	version	1.10.0
-%define release	2
-
-Name:       %name
-Version:    %version
-Release:    %release
+Name:       ldapscripts
+Version:    2.0.8
+Release:    1
 Summary:    LDAP Scripts
 Group:      System/Servers
 License:    GPL
