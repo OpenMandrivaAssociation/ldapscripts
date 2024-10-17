@@ -4,7 +4,7 @@ Release:    1
 Summary:    LDAP Scripts
 Group:      System/Servers
 License:    GPL
-URL:        http://contribs.martymac.com/
+URL:        https://contribs.martymac.com/
 Source:     http://contribs.martymac.com/ldapscripts/%{name}-%{version}.tgz
 Requires:   openldap-clients
 Requires:   sharutils
